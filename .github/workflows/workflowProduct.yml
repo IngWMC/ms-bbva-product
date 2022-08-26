@@ -14,5 +14,5 @@ jobs:
         java-version: 11
     - name: Mave Package
       run: mvn -B clean package -DskipTests
-    - name: Maven Verify
-      run: mvn -B clean verify
+    #- name: Maven Verify
+    #  run: mvn -B clean verify
