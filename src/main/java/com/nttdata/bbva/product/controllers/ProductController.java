@@ -23,7 +23,7 @@ public class ProductController {
 	
 	@GetMapping
 	public Mono<ResponseEntity<Flux<Product>>> findAll() {
-		logger.info("Inicio ProductController ::: findAll")
+		logger.info("Inicio ProductController ::: findAll");
 		Flux<Product> products = service.findAll().doOnNext(x -> logger.info("Fin ProductController ::: findAll"));
 		return Mono.just(ResponseEntity.ok()
 				.contentType(MediaType.APPLICATION_JSON)
