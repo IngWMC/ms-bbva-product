@@ -27,6 +27,9 @@ public class ProductTypeServiceImpl implements IProductTypeService {
 
 	@Override
 	public Mono<ProductType> update(ProductType obj) {
+		if (obj.getId() == null || obj.getId().isEmpty())
+			return Mono.error(() -> new BadRequestException("El campo id es requerido."));
+		
 		return repo.findById(obj.getId())
 				.switchIfEmpty(Mono.error(() -> new BadRequestException("El campo id no es válido.")))
 				.flatMap(productType -> {
